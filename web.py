@@ -8,10 +8,10 @@ def add_todo():
     todos.append(todo)
     functions.write_todos(todos)
 
-
 st.title("My Todo App")
 st.subheader("This is my subheader")
-st.write("This app is to increase your productivity")
+st.write("This app is to increase your <b>productivity</b>",
+         unsafe_allow_html=True)
 
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(todo, key=todo)
@@ -21,5 +21,5 @@ for index, todo in enumerate(todos):
         del st.session_state[todo]
         st.experimental_rerun()
 
-st.text_input(label="Enter value", placeholder="Add todo here...",
+st.text_input(label="", placeholder="Add todo here...",
               on_change=add_todo, key="new_todo")
